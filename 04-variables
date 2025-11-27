@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PERSON1=$1
+PERSON2=$2
+PERSON3=$3
+
+
+echo "$PERSON1:: Hi $PERSON2!"
+echo "$PERSON2: Hi $PERSON1!"
+echo "$PERSON1: How you doin'?"
+echo "$PERSON3: I'm good, thanks!"
+echo "Rachel: I'm great, thanks for asking!"
+echo "Ross: That's good to hear!"
+echo "Rachel: So, what are you up to today?"
+echo "Ross: Just hanging out with you guys."
+echo "Pheobe: Sounds fun!"
