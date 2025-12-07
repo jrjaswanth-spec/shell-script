@@ -1,0 +1,12 @@
+$!/bin/bash
+
+dnf install git
+if [ $? -ne 0 ]
+then
+echo "failure ... sudo access required"
+exit 1
+else
+echo "git installing.... success"
+else
+echo "git is already installed"
+fi
