@@ -1,12 +1,13 @@
-$!/bin/bash
+#!/bin/bash
 
-dnf install git
+dnf install git -y
 if [ $? -ne 0 ]
 then
 echo "failure ... sudo access required"
 exit 1
 else
 echo "git installing.... success"
+fi
 else
 echo "git is already installed"
 fi
