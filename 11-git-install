@@ -1,13 +1,22 @@
 #!/bin/bash
-
-dnf install git -y
-if [ $? -ne 0 ]
+USERID=$(id -u)
+if [ $USERID -ne 0 ]
 then
-echo "failure ... sudo access required"
+echo "failure.. need sudo access"
+exit 1
+fi
+
+
+dnf list instlled mysql
+
+if [ $? -ne 0 ]
+     dnf install mysql -y
+
+echo "installing mysql...Failure"
 exit 1
 else
 echo "git installing.... success"
 fi
 else
-echo "git is already installed"
+     echo "mysql already....Installed"
 fi
