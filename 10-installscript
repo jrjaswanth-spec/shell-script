@@ -1,0 +1,36 @@
+#!/bin/bash
+
+USERID=$(id -u)
+
+if [ $USERID -ne 0 ]
+then
+    echo "ERROR: YOU MUST HAVE SUDO ACCESS TO EXXECUTE THIS SCRIPT"
+    exit 1
+ fi
+
+ dnf list installed mysql
+
+ if [ $? -ne 0 ]
+ then
+     dnf install mysql -y
+     if [ $? -ne 0 ]
+     then 
+     echo "installing MySql ....failed"
+     exit 1
+ else
+      echo  "Installing Mysql....Success"
+   fi
+ else
+      echo "Mysql already installed"
+   fi        
+           
+  dnf install git -y
+
+  if [ $? -ne 0 ]
+  then
+      echo "installing git...failure"
+      exit 1
+ else
+      echo "installing git....success"
+ fi            
+ 
