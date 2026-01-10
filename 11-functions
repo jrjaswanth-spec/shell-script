@@ -1,4 +1,4 @@
-USERID=$( iD -u )
+USERID=$( id -u )
 
 VALIDATE(){
      if [ $1 -ne 0 ]
