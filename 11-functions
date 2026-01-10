@@ -1,4 +1,4 @@
-USERID=$(ID -u)
+USERID=$( iD -u )
 
 VALIDATE(){
      if [ $1 -ne 0 ]
@@ -22,7 +22,7 @@ then
  if [ $? -ne 0 ]
  then
      dnf install mysql -y
-     VALIDATE $1 "Installing MySql"
+     VALIDATE $? "Installing MySql"
   else
      echo "MYSQL is already... INSTALLED"
   fi
