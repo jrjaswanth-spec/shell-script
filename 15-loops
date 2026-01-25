@@ -9,7 +9,7 @@ SCRIPT_NAME=$( echo $0 | cut -d. -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "script started executed at: $( "date" )" &>>$LOG_FILE
+echo "script started executed at: $(date)" &>>$LOG_FILE
 if [ $USERID -ne 0 ]
 then
      echo "ERROR: please run this script with root privelage"
@@ -29,6 +29,13 @@ VALIDATE(){
 
 for package in $@
 do
-   echo "package is: $package"
-done
+    dnf list installed $package &>>$LOG_FILE
+if [ $? -ne 0 ]; then
+    dnf install $package -y &>>$LOG_FILE
+    VALIDATE $? "$package"
+  else
+    echo -e "$package already installed... $Y SKIPPING $N"
+  fi
+done        
+
    
