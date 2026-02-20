@@ -2,7 +2,7 @@
 set -e
 
 error(){
-      echo "There is an error" 
+      echo "There is an error in $LINENO, command is: " 
 }
 
 trap error ERR
