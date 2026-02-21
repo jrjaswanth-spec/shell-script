@@ -3,4 +3,3 @@
  
 echo "My country: $NAME"
 echo "PID OF SCRIPT-2: $$"
-sh 21-script-2.sh
