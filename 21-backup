@@ -43,3 +43,11 @@ if [ ! -d $DEST_DIR ]; then
    echo -e "$R destination $DEST_DIR doesnot exist $N"
    exit 1
 fi   
+
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*log" -type f -mtime +14)
+
+if [ ! -z "$(FILES)" ]; then
+    echo "files found"
+else
+    echo "no files to archive .... $Y SKIPPING $N"
+       
