@@ -7,7 +7,7 @@ Y="\e[33m"
 N="\e[0m"
 SOURCE_DIR=$1
 DEST_DIR=$2
-DAYS=${3: -4}  #if not provided considered as 14 days
+DAYS=${3:-4}  #if not provided considered as 14 days
 
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
@@ -35,11 +35,11 @@ fi
 
 if [ ! -d $SOURCE_DIR ]; then
    echo -e "$R source $SOURCE_DIR doesnot exist $N"
-   exit1
+   exit 1
 fi   
 
 
 if [ ! -d $DEST_DIR ]; then
    echo -e "$R destination $DEST_DIR doesnot exist $N"
-   exit1
+   exit 1
 fi   
