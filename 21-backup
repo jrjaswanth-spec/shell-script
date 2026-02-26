@@ -44,10 +44,10 @@ if [ ! -d $DEST_DIR ]; then
    exit 1
 fi   
 
-FILES=$(find $SOURCE_DIR -name "*log" -type f -mtime +14 $DAYS)
+FILES=$(find $SOURCE_DIR -name "*log" -type f -mtime +14 +"$DAYS")
 
-if [ ! -n "${FILES}" ]; then
-    echo "files found": $FILES"
+if [ ! -n "$FILES" ]; then
+    echo "files found: $FILES"
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     echo "Zip file name: $ZIP_FILE_NAME"
