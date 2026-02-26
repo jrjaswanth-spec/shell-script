@@ -70,7 +70,8 @@ done <<< "$FILES"
      else
         echo "ARCHIVAL....$R FAILURE $N"
          exit 1
-
+      fi
+      
 else
     echo -e "$Y No files to archive... SKIPPING $N"
 fi
