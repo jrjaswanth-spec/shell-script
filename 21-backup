@@ -49,5 +49,5 @@ FILES_TO_DELETE=$(find $SOURCE_DIR -name "*log" -type f -mtime +14)
 if [ ! -z "${FILES}" ]; then
     echo "files found"
 else
-    echo "no files to archive .... $Y SKIPPING $N"
+    echo -e "no files to archive .... $Y SKIPPING $N"
 fi   
