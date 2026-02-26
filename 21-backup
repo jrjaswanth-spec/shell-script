@@ -21,18 +21,17 @@ if [ $USERID -ne 0 ]; then
     exit 1 # failure is other than 0
 fi
 
-
 USAGE(){
     echo -e "$R USAGE: sudo sh backup.sh <SOURCE.DIR> <DEST.DIR> <DAYS>[optional] , default 14 days] $N"
     exit 1
 }
 
-
+#check SOOURCE_DIR AND DEST_DIR PASSED OR NOT
 if [ $# -lt 2 ]; then
    USAGE
 fi
 
-
+#check SOOURCE_DIR AND DEST_DIR exist or not
 if [ ! -d $SOURCE_DIR ]; then
    echo -e "$R source $SOURCE_DIR doesnot exist $N"
    exit 1
@@ -44,15 +43,34 @@ if [ ! -d $DEST_DIR ]; then
    exit 1
 fi   
 
+#find the file
 FILES=$(find "$SOURCE_DIR" -name "*.log" -type f -mtime +"$DAYS")
 
 if [ -n "$FILES" ]; then
+#start archiving
     echo "Files found:"
     echo "$FILES"
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     echo "Zip file name: $ZIP_FILE_NAME"
     find "$SOURCE_DIR" -name "*.log" -type f -mtime +"$DAYS" | zip -@ -j "$ZIP_FILE_NAME"
+     
+     #chech archival success ot not
+     if [ -f $ZIP_FILE_NAME ]
+     then
+         echo -e "ARCHIVAL....$G SUCCESS $N"
+         while IFS= read -r filepath
+
+  #delete if success
+do
+   echo "Deleting the file: $filepath"
+   rm -rf "$filepath"
+   echo "deleted the file: $filepath"
+done <<< "$FILES"
+     else
+        echo "ARCHIVAL....$R FAILURE $N"
+         exit 1
+
 else
     echo -e "$Y No files to archive... SKIPPING $N"
 fi
