@@ -1,15 +1,17 @@
-#!/bin/bash
-# Initialize a counter variable
-count=1
+# #!/bin/bash
+# # Initialize a counter variable
+# count=1
 
-# Loop while 'count' is less than or equal to 5
-while [ $count -le 5 ]
-do
-    echo "Count is $count"
-    # Increment the counter using arithmetic expansion
-    ((count++))
-done
+# # Loop while 'count' is less than or equal to 5
+# while [ $count -le 5 ]
+# do
+#     echo "Count is $count"
+#     # Increment the counter using arithmetic expansion
+#     ((count++))
+# done
 
-echo "Loop finished."
+# echo "Loop finished."
 
-
+while IFS= read -r line; do
+echo "processing line: $line
+done < 17-script.sh
