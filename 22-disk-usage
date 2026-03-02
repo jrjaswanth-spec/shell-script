@@ -15,3 +15,5 @@ if [ $USAGE -ge $DISK_THRESHOLD ]; then
 done <<< $DISK_USAGE
 
 echo "Message Body:  $MESSAGE"
+
+sh mail "jrjaswanth@gmail.com" "High Disk Usage Alert" "High Disk Usage" "$Message" "$IP_ADDRESS" "DevOps Team"
